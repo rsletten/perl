@@ -1,20 +1,26 @@
 #!/usr/bin/perl
+##
+# Rob Sletten
+##
 
 use strict;
 use warnings;
 
-open(my $infile, "<", "data.txt") or die("Unable to open data.txt: $!");
+my $dafile=$ARGV[0];
+my $cfserver=$ARGV[1];
+
+open(my $infile, "<", "$dafile") or die("Unable to open ${dafile}: $!");
 my @data = <$infile>;
 
-my $outhost="hosts.cfg";
-my $groupout="hostgroup.cfg";
+my $outhost="${cfserver}-hosts.cfg";
+my $groupout="${cfserver}-group.cfg";
 open(my $outfile, ">", $outhost) or die("Unable to open $outhost: $!");
 open(my $outgroup, ">", $groupout) or die("Unable to open $groupout: $!");
 
 $outgroup->printf(<<HOST);
 define hostgroup{
-        hostgroup_name          3cf1_CAs
-        alias                   Monitored CAs 
+        hostgroup_name          ${cfserver}_CAs
+        alias                   ${cfserver} CAs 
 HOST
 
 $outgroup->print("        members                 ");
