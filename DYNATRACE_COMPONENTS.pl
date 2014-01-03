@@ -7,7 +7,7 @@
 # 3) stopScript is the stop script for the service
 # 4) NOTES is an optional value to give some additional info about the service
 #
-# 
+# 20111027 - eli.rodriguez@optier.com - initial creation
 #
 %configuration = (
 	'dtcollectorv42-silas' => 
